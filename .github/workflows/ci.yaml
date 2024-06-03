@@ -1,6 +1,9 @@
 name: React.js CI
 
 on:
+  push:
+    branches: 
+      - master
   pull_request:
     branches: "master"
 
@@ -43,7 +46,7 @@ jobs:
       - name: Analyze with SonarCloud
         uses: sonarsource/sonarcloud-github-action@master
         env:
-          GITHUB_TOKEN: ${{ secrets.THEGITHUB_TOKEN }}
+          github_token: ${{ secrets.PAT}}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
           projectBaseDir: quiz-app

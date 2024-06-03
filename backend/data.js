@@ -13,7 +13,7 @@ module.exports = {
       option1: "Moses",
       option2: "Joshua",
       option3: "Abraham",
-      option4: "Isaac",
+      option4: "Isaack",
       ans: 2,
     },
     {

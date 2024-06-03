@@ -212,7 +212,7 @@ Here, you will see that you got the credentials and also you can download the CS
 ![Screenshot 2024-02-28 at 9 50 48 AM](https://github.com/cloudcore-hub/Kubernetes-DevSecOps-CI-CD-Project/assets/88560609/283cc9fb-31d7-4220-93b3-15d93cb45b4f)
 
 
-#### Create Github Repo Secret for iac
+#### Create Repo Secret for iac
 1. **Navigate to Your GitHub Repository created in step 1:**
    - Find and click on the iac repository where you want to add a secret.
 

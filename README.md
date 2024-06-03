@@ -353,7 +353,7 @@ eksctl version
 #### Create an eks cluster using the below commands.
 This might take 15-20 minutes. Also adjust the node count 
 ```
-eksctl create cluster --name quizapp-eks-cluster --region us-east-1 --node-type t2.large --nodes-min 2 --nodes-max 4
+eksctl create cluster --name quizapp-eks-cluster --region eu-west-1 --node-type t2.large --nodes-min 2 --nodes-max 4
 ```
 
 ![Screenshot 2024-02-28 at 2 51 37 PM](https://github.com/cloudcore-hub/Kubernetes-DevSecOps-CI-CD-Project/assets/88560609/2cea7f67-7d6a-445c-9863-e19bccf580e2)
@@ -361,7 +361,7 @@ eksctl create cluster --name quizapp-eks-cluster --region us-east-1 --node-type 
 
 Run the command below to connect to the EKS cluster created  allowing Kubernetes operations on that cluster.
 ```
-aws eks update-kubeconfig --region us-east-1 --name quizapp-eks-cluster
+aws eks update-kubeconfig --region eu-west-1 --name quizapp-eks-cluster
 ```
 
 Once the cluster is created, you can validate whether your nodes are ready or not by the below command
@@ -385,12 +385,12 @@ aws iam create-policy --policy-name AWSLoadBalancerControllerIAMPolicy --policy-
 #### Create OIDC Provider
 To allows the cluster to integrate with AWS IAM for assigning IAM roles to Kubernetes service accounts, enhancing security and management.
 ```
-eksctl utils associate-iam-oidc-provider --region=us-east-1 --cluster=quizapp-eks-cluster --approve
+eksctl utils associate-iam-oidc-provider --region=eu-west-1 --cluster=quizapp-eks-cluster --approve
 ```
 #### Create Service Account 
 Add your aws 12-digit account ID
 ```
-eksctl create iamserviceaccount --cluster=quizapp-eks-cluster --namespace=kube-system --name=aws-load-balancer-controller --role-name AmazonEKSLoadBalancerControllerRole --attach-policy-arn=arn:aws:iam::<ACCOUNT-ID>:policy/AWSLoadBalancerControllerIAMPolicy --approve --region=us-east-1
+eksctl create iamserviceaccount --cluster=quizapp-eks-cluster --namespace=kube-system --name=aws-load-balancer-controller --role-name AmazonEKSLoadBalancerControllerRole --attach-policy-arn=arn:aws:iam::<ACCOUNT-ID>:policy/AWSLoadBalancerControllerIAMPolicy --approve --region=eu-west-1
 ```
 
 ![Screenshot 2024-02-28 at 2 56 12 PM](https://github.com/cloudcore-hub/Kubernetes-DevSecOps-CI-CD-Project/assets/88560609/6bb969ac-1118-482a-8b4c-bf5e9ecd8260)
@@ -880,9 +880,9 @@ Review your configurations and click on the "Create records" button to create yo
 By following these steps, you'll successfully create an A-record in AWS Route 53 that points to your Application Load Balancer, allowing you to route traffic from your domain to your ALB.
  
 
-Share the quizapp.cloudcorehub.com
+Share the quizapp.ogasabi.com
 
-Note: I have created a subdomain quizapp.cloudcorehub.com
+Note: I have created a subdomain quizapp.ogasabi.com
 
 ![Screenshot 2024-03-13 at 3 12 09 PM](https://github.com/cloudcore-hub/reactjs-quiz-app/assets/88560609/31d1a7b4-3270-4660-b369-5a8aa38c4355)
 
@@ -923,14 +923,14 @@ For Nodes
 ### Step 14: Clean up 
 From your jumphost server terminal run
 ```
-eksctl delete cluster --name=quizapp-eks-cluster --region=us-east-1
+eksctl delete cluster --name=quizapp-eks-cluster --region=eu-west-1
 ```
 
 In your iac_code terminal, 
 cd into the terraform folder
 run
 ```
-terraform init -backend-config="bucket=cloudcore007"
+terraform init -backend-config="bucket=gen-drop"
 ```
 and then 
 ```
